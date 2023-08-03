@@ -1,0 +1,33 @@
+test:
+  workers:
+    number: 5   # Number of worker processes
+  rounds:
+    - label: Create Auction
+      txNumber: 100
+      rateControl:
+        type: fixed-load
+        opts:
+          transactionLoad: 10
+      workload:
+        module: /home/moonzad/go/src/github.com/zaddgit/fabric-samples/auction-simple/application-javascript/createAuctionV.js
+
+    - label: Submit Bid
+      txNumber: 100
+      rateControl:
+        type: fixed-load
+        opts:
+          transactionLoad: 10
+      workload:
+        module: /home/moonzad/go/src/github.com/zaddgit/fabric-samples/auction-simple/application-javascript/submitBid.js
+
+    - label: Close Auction
+      txNumber: 1
+      rateControl:
+        type: fixed-load
+        opts:
+          transactionLoad: 1
+      workload:
+        module: /home/moonzad/go/src/github.com/zaddgit/fabric-samples/auction-simple/application-javascript/application-javascript/closeAuction.js
+
+   
+       
