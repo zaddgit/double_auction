@@ -46,7 +46,9 @@ Run the following command to register and enroll the seller identity that will c
 node registerEnrollUser.js org1 seller
 ```
 #seller
+```
 node registerEnrollUser.js org1 seller
+```
 You should see the logs of the seller wallet being created as well.
 ```
 node registerEnrollUser.js org2 badr
@@ -57,13 +59,13 @@ node registerEnrollUser.js org1 adrian
 ```
 
 ## Create the auction
-
+```
 
 node createAuction.js org1 seller TradingEnergy1 item1
 ```
 
 After the transaction is complete, the `createAuction.js` application will query the auction stored in the public channel ledger:
-```
+
 *** Result: Auction: {
   "objectType": "auction",
   "item": "TradingEnergy1",
@@ -89,26 +91,27 @@ node bid.js org1 mounim TradingEnergy1 800
 ```
 
 The application will query the bid after it is created:
-```
+
 *** Result:  Bid: {
   "objectType": "bid",
   "price": 800,
   "org": "Org1MSP",
   "bidder": "x509::CN=mounim,OU=client+OU=org1+OU=department1::CN=ca.org1.example.com,O=org1.example.com,L=Durham,ST=North Carolina,C=US"
 }
-```
 
 
 The `bid.js` application also prints the bidID:
-```
+
 *** Result ***SAVE THIS VALUE*** BidID: 67d85ef08e32de20994c816362d0952fe5c2ae3f2d1083600c3ac61f65a89f60
-```
+
 
 The BidID acts as the unique identifier for the bid. This ID allows you to query the bid using the `queryBid.js` program and add the bid to the auction. Save the bidID returned by the application as an environment variable in your terminal:
 ```
 export MOUNIM_BID_ID=67d85ef08e32de20994c816362d0952fe5c2ae3f2d1083600c3ac61f65a89f60
 
-
+```
+then to submit the bid :
+```
 node submitBid.js org1 mounim TradingEnergy1 $MOUNIM_BID_ID
 
 
