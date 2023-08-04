@@ -13,8 +13,9 @@ You can then run the following command to deploy the test network.
 
  the `-ca` flag to deploy the network using certificate authorities. We will use the CA to register and enroll our sellers and buyers.
 
-
+```
 ./network.sh deployCC -ccn auction -ccp ../auction-simple/chaincode-go/ -ccl go -ccep "OR('Org1MSP.peer','Org2MSP.peer')"
+
 ```
 
 ## Install the application dependencies
@@ -76,7 +77,7 @@ After the transaction is complete, the `createAuction.js` application will query
   "price": 0,
   "status": "open"
 }
-```
+
 The smart contract uses the `GetClientIdentity().GetID()` API to read the identity that creates the auction and defines that identity as the auction `"seller"`. The seller is identified by the name and issuer of the seller's certificate.
 
 ## Bid on the auction
@@ -106,12 +107,12 @@ The `bid.js` application also prints the bidID:
 The BidID acts as the unique identifier for the bid. This ID allows you to query the bid using the `queryBid.js` program and add the bid to the auction. Save the bidID returned by the application as an environment variable in your terminal:
 ```
 export MOUNIM_BID_ID=67d85ef08e32de20994c816362d0952fe5c2ae3f2d1083600c3ac61f65a89f60
-```
+
 
 node submitBid.js org1 mounim TradingEnergy1 $MOUNIM_BID_ID
 
 
-
+```
 *** Result: Auction: {
   "objectType": "auction",
   "item": "item1",
@@ -130,7 +131,7 @@ node submitBid.js org1 mounim TradingEnergy1 $MOUNIM_BID_ID
   "price": 0,
   "status": "open"
 }
-```
+
 
 ### Bid as jean
 
